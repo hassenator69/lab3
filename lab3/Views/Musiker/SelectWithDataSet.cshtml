@@ -1,0 +1,76 @@
+﻿@model IEnumerable<lab3.Models.Musikerdetalj>
+
+@{ ViewData["Title"] = "SelectWithDataSet";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<h2>Visa musiker</h2>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Skivor_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Skivor_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Skivor_Genre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Skivor_Musiker_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Musiker_Name)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Skivor_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Skivor_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Skivor_Genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Skivor_Musiker_Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Musiker_Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { Skivor_ID = item.Skivor_ID })
+                        @Html.ActionLink("Details", "Details", new { Skivor_ID = item.Skivor_ID })
+                        @Html.ActionLink("Delete", "Delete", new { Skivor_ID = item.Skivor_ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>ingen data är tillgänglig.</p>
+}

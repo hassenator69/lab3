@@ -1,0 +1,55 @@
+﻿@model lab3.Models.Musikerdetalj
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.Skivor_Name</title>
+    <meta name="keywords" content="@Model.Keywords" />
+    <meta name="description" content="@Model.Description" />
+    <meta property="og:title" content="@Model.OpenGraphTitle" />
+    <meta property="og:description" content="@Model.OpenGraphDescription" />
+</head>
+
+    <div>
+        <h4>
+            MusikerDetalj
+        </h4>
+        <hr />
+        @ViewBag.error
+        <dl class="dl_horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Skivor_ID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Skivor_ID)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Skivor_Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Skivor_Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Skivor_Genre)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Skivor_Genre)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Skivor_Musiker_Id)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Skivor_Musiker_Id)
+            </dd>
+            <!-- <dt>
+                 @Html.DisplayNameFor(model => model.Musiker_Name)
+             </dt>
+             <dd>
+                 @Html.DisplayFor(model => model.Musiker_Name)
+             </dd>-->
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new
+        { //Skivor_Id = Model.PrimaryKey
+                                               })
+        <a asp-action="SelectWithDataSet">Back to List</a>
+    </div>

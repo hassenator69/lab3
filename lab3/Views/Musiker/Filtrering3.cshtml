@@ -1,0 +1,80 @@
+﻿@model lab3.Models.ViewModelSM
+
+@{
+    int i = 0;
+    if (ViewData["Musiker"] != null) { i = (int)ViewData["Musiker"]; }
+    string s = ViewBag.message;
+    if (ViewBag.message != null)
+    {
+
+    }
+}
+<h2>Filtrering</h2>
+<div class="row">
+    <div class="form-group col-md-4">
+        <form asp-action="Filtrering3">
+            <div class="form-group">
+                <select class="form-control" id="Id" name="Musiker">
+                    @foreach (lab3.Models.MusikerModel MusikerModel in Model.MusikerModelLista)
+                    {
+                        @if (MusikerModel.Id != i)
+                        {
+                            <option value="@MusikerModel.Id">@MusikerModel.Musiker</option>
+                        }
+                        else
+                        {
+                            <option value="@MusikerModel.Id" Selected>@MusikerModel.Musiker</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Filtrera" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<p>Variabel s: @s</p>
+
+<p><b>Personer och aktiviteter med lista från vymodell</b></p>
+<table class="table">
+    <tr>
+        <th>Musiker</th>
+        <th>Skivor</th>
+    </tr>
+    @if (Model.SkivorMusikerModelLista != null)
+    {
+        @foreach (lab3.Models.SkivorMusikerModel SkivorMusikerModel in Model.SkivorMusikerModelLista)
+        {
+            <tr>
+                <td>@SkivorMusikerModel.Musiker</td>
+                <td>@SkivorMusikerModel.Skivor</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <p>No data available.</p>
+    }
+
+</table>
+
+<p><b>Musikanter - Lista ViewData</b></p>
+@{
+    List<MusikerModel> MusikerModelLista2 = (List<MusikerModel>)ViewData["musikantlista"];
+}
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Musiker</th>
+    </tr>
+    @foreach (lab3.Models.MusikerModel MusikerModel in MusikerModelLista2)
+    {
+        <tr>
+            <td>@MusikerModel.Id</td>
+            <td>@MusikerModel.Musiker</td>
+        </tr>
+    }
+</table>

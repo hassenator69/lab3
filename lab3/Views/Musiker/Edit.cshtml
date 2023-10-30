@@ -1,0 +1,39 @@
+﻿@model lab3.Models.Musikerdetalj
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@ViewBag.error
+
+
+<h1>Edit Skiva</h1>
+
+<form asp-action="Edit" asp-route-Skivor_ID="@Model.Skivor_ID">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Skivor_ID" />
+
+    <div class="form-group">
+        <label asp-for="Skivor_Name" class="control-label">Skivnamn</label>
+        <input asp-for="Skivor_Name" class="form-control" />
+        <span asp-validation-for="Skivor_Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Skivor_Genre" class="control-label">Genre</label>
+        <input asp-for="Skivor_Genre" class="form-control" />
+        <span asp-validation-for="Skivor_Genre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Skivor_Musiker_Id" class="control-label">Musiker nr</label>
+        <input asp-for="Skivor_Musiker_Id" class="form-control" />
+        <span asp-validation-for="Skivor_Musiker_Id" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="SelectWithDataSet">Back to List</a>
+    </div>
+</form>
